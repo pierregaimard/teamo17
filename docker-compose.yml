@@ -1,0 +1,34 @@
+version: "3.8"
+
+services:
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "pass"
+    volumes:
+      - type: volume
+        source: teamo17
+        target: /var/lib/mysql
+    ports:
+      - "6033:3306"
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    depends_on:
+      - db
+    links:
+      - db
+
+volumes:
+  teamo17:
+    external: true

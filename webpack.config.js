@@ -1,3 +1,4 @@
+const path = require("path");
 const Encore = require("@symfony/webpack-encore");
 
 // Manually configure the runtime environment if not already configured yet by the "encore" command.
@@ -21,6 +22,13 @@ Encore
    * and one CSS file (e.g. app.scss) if your JavaScript imports CSS.
    */
   .addEntry("app", "./assets/app.js")
+  .addEntry("home", "./assets/scripts/home/home.js")
+  .addEntry("login", "./assets/scripts/security/login.js")
+
+  .copyFiles({
+    from: "./assets/images",
+    to: "images/[path][name].[ext]",
+  })
 
   // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
   .enableStimulusBridge("./assets/controllers.json")
@@ -59,8 +67,19 @@ Encore
   // enables Sass/SCSS support
   .enableSassLoader()
 
-  // For Tailwind css
-  .enablePostCssLoader();
+  .configureDevServerOptions(function (options) {
+    options.server = {
+      type: "https",
+      options: {
+        key: path.join(__dirname, "ssl/local.key"),
+        cert: path.join(__dirname, "ssl/local.crt"),
+        watchFiles: [
+          path.join(__dirname, "templates/**/*.twig"),
+          path.join(__dirname, "assets/**/*.*"),
+        ],
+      },
+    };
+  });
 
 // uncomment if you use TypeScript
 //.enableTypeScriptLoader()

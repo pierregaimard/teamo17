@@ -1,0 +1,32 @@
+body {
+  font-family: var(--font-family);
+  font-size: 1.6rem;
+  position: relative;
+  color: var(--color-gray-dark);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+}
+
+input {
+  padding: 1rem;
+  border-radius: 1rem;
+  outline: none;
+  border: 1px solid;
+  font-size: 1.6rem;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}

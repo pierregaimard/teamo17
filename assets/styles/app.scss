@@ -1,7 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-body {
-  background-color: lightgray;
-}
+@use "variables";
+@use "reset";
+@use "utilities";
+@use "base";
+@use "classes";
+@use "media";
+@use "includes/header";

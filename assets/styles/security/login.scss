@@ -1,0 +1,106 @@
+@use "../media";
+
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  flex-flow: row nowrap;
+
+  .image {
+    flex: 1;
+    display: none;
+    background: center center / cover no-repeat
+      url("../../images/backgrounds/img-neuville.webp");
+
+    @include media.lg {
+      display: block;
+    }
+  }
+
+  .form-container {
+    flex: 1;
+    background: var(--color-gray-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+
+    form {
+      width: 100%;
+      max-width: 350px;
+
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: flex-start;
+      align-items: stretch;
+      color: white;
+
+      h1 {
+        margin-top: 3rem;
+        font-size: 4rem;
+        font-weight: 200;
+      }
+
+      h2 {
+        margin-top: 0.3rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .error {
+        padding: 1rem;
+        border: 1px solid var(--color-danger-light);
+        border-radius: 1rem;
+        color: var(--color-danger-light);
+      }
+
+      label {
+        margin-top: 1rem;
+      }
+
+      input {
+        margin-top: 0.2rem;
+        color: var(--color-gray-light);
+        font-weight: 200;
+        background: var(--color-gray-dark);
+        border: 1px solid var(--color-gray-600);
+        transition: border-color ease-in-out 0.2s;
+
+        &:focus {
+          border-color: var(--color-primary);
+        }
+      }
+
+      .actions {
+        margin-top: 2rem;
+        display: flex;
+
+        button {
+          flex: 1;
+        }
+
+        a {
+          flex: 1;
+          margin-left: 1rem;
+        }
+      }
+
+      .actions-text {
+        margin-top: 2rem;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        font-weight: 200;
+
+        p {
+          padding: 0.3rem 0;
+
+          a {
+            &:hover {
+              color: white;
+            }
+          }
+        }
+      }
+    }
+  }
+}

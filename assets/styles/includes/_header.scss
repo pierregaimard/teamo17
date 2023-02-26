@@ -1,0 +1,117 @@
+@use "../media";
+
+header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  height: var(--navbar-height);
+
+  .navbar {
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    height: var(--navbar-height);
+    background: var(--color-gray-dark);
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+
+    .navbar-brand {
+      padding-left: 2rem;
+
+      a {
+        img {
+          height: 4rem;
+          transition: var(--transition-all-200);
+        }
+      }
+    }
+
+    .navbar-menu {
+      display: none;
+
+      @include media.md {
+        display: block;
+      }
+
+      a {
+        margin-right: 2rem;
+        color: var(--color-gray-light);
+        transition: var(--transition-all-200);
+
+        &:hover {
+          color: var(--color-primary);
+        }
+      }
+
+      .btn-primary {
+        border: 1px solid rgba(0, 0, 0, 0);
+
+        &:hover {
+          color: white;
+          border: 1px solid white;
+        }
+      }
+    }
+
+    .navbar-button {
+      z-index: 1;
+      margin-right: 2rem;
+      color: var(--color-gray-light);
+      font-size: 3rem;
+
+      @include media.md {
+        display: none;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .navbar-mobile {
+    position: relative;
+
+    @include media.md {
+      display: none;
+    }
+
+    .navbar-mobile-menu {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: flex-start;
+      align-items: stretch;
+      background: var(--color-gray-dark);
+
+      &.hidden {
+        top: -200px;
+        transition: all ease-in 0.4s;
+      }
+
+      &.visible {
+        top: var(--navbar-height);
+        transition: all ease-out 0.4s;
+      }
+
+      li {
+        padding: 1.5rem;
+        border-bottom: 1px solid var(--color-gray-800);
+        background: var(--color-gray-dark);
+
+        &:first-child {
+          border-top: 1px solid var(--color-gray-800);
+        }
+
+        a {
+          color: white;
+        }
+      }
+    }
+  }
+}

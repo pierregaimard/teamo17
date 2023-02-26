@@ -1,0 +1,48 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  {{ encore_entry_link_tags('login') }}
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+  {{ encore_entry_script_tags('login') }}
+{% endblock %}
+
+{% block title %}Team O17 | Login{% endblock %}
+
+{% block body %}
+  <div class="login-container">
+    <div class="image"></div>
+    <div class="form-container">
+      <form method="POST" action="{{ path('app_login') }}">
+        <img src="{{ asset('build/images/app/brand.svg') }}" alt="Logo Team O17">
+        <h1>Espace membres</h1>
+        <h2>Connexion</h2>
+
+        {% if error %}
+          <div class="error">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        <label for="username">Email</label>
+        <input type="text" id="username" name="_username" value="{{ last_username }}" autofocus>
+
+        <label for="password">Mot de passe</label>
+        <input type="password" id="password" name="_password">
+
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+        <div class="actions">
+          <button type="submit" class="btn btn-primary">Connexion</button>
+          <a href="{{ path('home') }}" class="btn btn-outline-dark">Retour</a>
+        </div>
+
+        <div class="actions-text">
+          <p><a href="#">Mot de passe oublié ?</a></p>
+          <p>Pas encore inscrit ? <a href="#"> s'inscrire</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

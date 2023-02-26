@@ -1,0 +1,10 @@
+.app-brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .app-brand-title {
+    width: 100%;
+    max-width: 80rem;
+  }
+}

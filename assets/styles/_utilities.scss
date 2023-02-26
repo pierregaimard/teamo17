@@ -1,0 +1,45 @@
+.block {
+  display: block;
+}
+
+.inline {
+  display: inline;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.opacity {
+  &-0 {
+    opacity: 0;
+  }
+
+  &-1 {
+    opacity: 1;
+  }
+}
+
+.vh-full {
+  min-height: calc(100vh - var(--navbar-height));
+}
+
+.bg-dark {
+  background: var(--color-gray-dark);
+}
+
+.p {
+  &-1 {
+    padding: 1rem;
+  }
+
+  &x-1 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  &x-2 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}

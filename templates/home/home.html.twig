@@ -1,5 +1,24 @@
 {% extends "base.html.twig" %}
 
-{% block body %}
-    <h1>Hello world</h1>
+{% block title %}Team O17 | Home{% endblock %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  {{ encore_entry_link_tags('home') }}
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+  {{ encore_entry_script_tags('home') }}
+{% endblock %}
+
+{% block content %}
+  <section class="app-brand vh-full bg-dark px-2">
+    <div class="app-brand-title">
+      <img src="{{ asset('build/images/app/brand.svg') }}" alt="Team O17 Logo">
+    </div>
+  </section>
+  <section class="vh-full px-2">
+    <h1 style="color: #54af33">Notre projet</h1>
+  </section>
 {% endblock %}

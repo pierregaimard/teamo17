@@ -1,0 +1,39 @@
+<header>
+  <div class="navbar">
+    <div class="navbar-brand">
+      <a href="{{ path('home') }}" class="">
+        <img src="{{ asset('build/images/app/brand.svg') }}" alt="Team O17 Logo" class="">
+      </a>
+    </div>
+    <nav class="navbar-menu">
+      <a href="#" class="navbar-menu-item">NOTRE PROJET</a>
+      <a href="#" class="navbar-menu-item">CONTACT</a>
+
+      {% if not app.user %}
+        <a href="#" class="navbar-menu-item">INSCRIPTION</a>
+      {% endif %}
+
+      {# Used for app admin. This page redirects to admin dashboard #}
+      {% if is_granted("ROLE_ADMIN") %}
+        <a href="{{ path('admin_home') }}" class="navbar-menu-item">ADMIN</a>
+      {% endif %}
+
+      {# Used for customer admins. This page redirects to customer project admin #}
+      {% if is_granted("ROLE_CUSTOMER_ADMIN") %}
+        <a href="#" class="navbar-menu-item" >ADMIN</a>
+      {% endif %}
+
+      {% if not app.user %}
+        <a href="{{ path('app_login') }}" class="navbar-menu-item btn btn-primary" >Connexion</a>
+      {% else %}
+        <a href="{{ path('app_logout') }}" class="navbar-menu-item btn btn-primary" >Déconnexion</a>
+      {% endif %}
+    </nav>
+    <div class="navbar-button">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+  </div>
+  <nav class="navbar-mobile">
+    <ul class="navbar-mobile-menu hidden"></ul>
+  </nav>
+</header>
